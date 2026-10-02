@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amy Store</title>
+<meta name="description" content="Amy Store — moda y accesorios femeninos en Lima, Perú. Envíos a todo el Perú, pagos con Yape, Plin y tarjeta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: asymmetric editorial hero, soft rose ground, plum ink, champagne details; floating concierge chat bottom-right */
+:root{
+  --blush:#f8eeee;
+  --rose:#e9c9cc;
+  --rose-deep:#c98b93;
+  --plum:#4a2338;
+  --plum-soft:#7a4f63;
+  --champagne:#c9a66b;
+  --white:#fffdfd;
+  --line:#ead8da;
+  --display:"Cormorant Garamond", "Times New Roman", Georgia, serif;
+  --body:"Jost", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --wa:#1fa855;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);font-weight:300;font-size:16px;line-height:1.65;color:var(--plum);background:var(--blush)}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--champagne);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.08;text-wrap:balance;margin:0}
+.eyebrow{font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;font-weight:500;color:var(--rose-deep)}
+.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--body);font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;padding:.95em 1.8em;border-radius:999px;border:1px solid var(--plum);background:var(--plum);color:var(--white);text-decoration:none;cursor:pointer;transition:background .25s,color .25s,transform .25s}
+.btn:hover{background:transparent;color:var(--plum)}
+.btn.ghost{background:transparent;color:var(--plum)}
+.btn.ghost:hover{background:var(--plum);color:var(--white)}
+ 
+/* Top bar */
+.promo{background:var(--plum);color:var(--rose);text-align:center;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:.6em 16px}
+header{position:sticky;top:0;z-index:40;background:rgba(248,238,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px}
+.logo{font-family:var(--display);font-size:1.9rem;font-weight:600;text-decoration:none;letter-spacing:.02em}
+.logo em{font-style:italic;font-weight:400;color:var(--rose-deep)}
+.nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:.86rem;letter-spacing:.12em;text-transform:uppercase;font-weight:400;position:relative}
+.nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--champagne);transition:width .3s}
+.nav ul a:hover::after{width:100%}
+.menu-btn{display:none;background:none;border:0;font-size:1.6rem;color:var(--plum);cursor:pointer}
+ 
+/* Hero */
+.hero{padding-block:72px 88px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.8rem,6.4vw,5.6rem);font-weight:400;margin:.25em 0 .35em}
+.hero h1 em{color:var(--rose-deep)}
+.hero p{max-width:34em;font-size:1.08rem;color:var(--plum-soft);margin:0 0 2em}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.hero-art{position:relative;aspect-ratio:4/5;max-width:100%}
+.arch{position:absolute;inset:0;border-radius:999px 999px 24px 24px;background:
+  radial-gradient(circle at 30% 25%,rgba(255,255,255,.7),transparent 40%),
+  linear-gradient(160deg,var(--rose) 0%,var(--rose-deep) 70%,var(--plum-soft) 100%);overflow:hidden}
+.arch svg{position:absolute;inset:auto 0 0 0;width:100%;height:auto}
+.badge{position:absolute;left:-28px;bottom:48px;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:16px 20px;box-shadow:0 18px 40px -20px rgba(74,35,56,.4)}
+.badge strong{display:block;font-family:var(--display);font-size:1.6rem;font-weight:600}
+.badge span{font-size:.8rem;color:var(--plum-soft)}
+.seal{position:absolute;right:-12px;top:36px;width:110px;height:110px;animation:spin 22s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+ 
+/* Values strip */
+.strip{border-block:1px solid var(--line);background:var(--white)}
+.strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-block:28px}
+.strip-item{display:flex;gap:14px;align-items:center}
+.strip-item svg{flex:none;width:34px;height:34px;color:var(--champagne)}
+.strip-item b{display:block;font-weight:500;font-size:.95rem}
+.strip-item small{color:var(--plum-soft);font-size:.82rem}
+ 
+/* Sections */
+section{padding-block:96px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.sec-head h2{font-size:clamp(2.2rem,4.4vw,3.4rem);margin-top:.2em}
+.sec-head p{max-width:28em;color:var(--plum-soft);margin:0}
+ 
+/* Categories */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:3/4;display:flex;align-items:flex-end;padding:22px;text-decoration:none;color:var(--white);isolation:isolate}
+.cat::before{content:"";position:absolute;inset:0;z-index:-1;transition:transform .6s}
+.cat:hover::before{transform:scale(1.06)}
+.cat:nth-child(1)::before{background:linear-gradient(170deg,#e7c3c6,#a8687a)}
+.cat:nth-child(2)::before{background:linear-gradient(170deg,#ecd9c6,#b48a5f)}
+.cat:nth-child(3)::before{background:linear-gradient(170deg,#d9c8d8,#7a4f63)}
+.cat:nth-child(4)::before{background:linear-gradient(170deg,#f1d6d0,#c98b93)}
+.cat svg{position:absolute;top:22%;left:50%;transform:translateX(-50%);width:46%;opacity:.85;color:var(--white)}
+.cat h3{font-size:1.7rem;font-weight:500}
+.cat span{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+ 
+/* Products */
+.products{background:var(--white)}
+.filters{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:.5em 1.2em;font:inherit;font-size:.85rem;color:var(--plum);cursor:pointer;transition:.2s}
+.chip.on,.chip:hover{background:var(--plum);border-color:var(--plum);color:var(--white)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 22px}
+.card{display:flex;flex-direction:column;gap:12px}
+.thumb{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;display:grid;place-items:center}
+.thumb svg{width:50%;color:rgba(255,255,255,.92);transition:transform .5s}
+.card:hover .thumb svg{transform:scale(1.08) rotate(-3deg)}
+.tag{position:absolute;top:12px;left:12px;background:var(--white);color:var(--plum);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:.35em .8em;border-radius:999px;font-weight:500}
+.card h3{font-family:var(--body);font-size:1rem;font-weight:400}
+.price{display:flex;justify-content:space-between;align-items:center;font-variant-numeric:tabular-nums}
+.price b{font-weight:500;font-size:1.05rem}
+.price s{color:var(--plum-soft);font-size:.85rem;margin-left:6px}
+.ask{background:none;border:1px solid var(--line);border-radius:999px;padding:.4em .95em;font:inherit;font-size:.78rem;color:var(--plum);cursor:pointer;transition:.2s}
+.ask:hover{border-color:var(--wa);color:var(--wa)}
+ 
+/* About */
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.quote{font-family:var(--display);font-style:italic;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.2;border-left:1px solid var(--champagne);padding-left:28px}
+.about-grid p{color:var(--plum-soft);max-width:36em}
+.stats{display:flex;gap:44px;flex-wrap:wrap;margin-top:28px}
+.stats b{display:block;font-family:var(--display);font-size:2.6rem;font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
+.stats span{font-size:.82rem;color:var(--plum-soft)}
+ 
+/* Reviews */
+.reviews{background:var(--plum);color:var(--blush)}
+.reviews .eyebrow{color:var(--champagne)}
+.reviews .sec-head p{color:var(--rose)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{border:1px solid rgba(233,201,204,.25);border-radius:20px;padding:28px}
+.stars{color:var(--champagne);letter-spacing:.2em}
+.rev p{font-family:var(--display);font-size:1.3rem;line-height:1.4;margin:.6em 0 1em}
+.rev small{color:var(--rose);letter-spacing:.08em}
+ 
+/* FAQ + Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+details{border-bottom:1px solid var(--line);padding-block:18px}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-weight:400;font-size:1.05rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);font-size:1.6rem;line-height:1;color:var(--rose-deep);transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--plum-soft);margin:.7em 0 0}
+.form-card{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:36px;display:grid;gap:16px}
+.form-card h3{font-size:2rem}
+.field{display:grid;gap:6px}
+.field label{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.field input,.field select,.field textarea{font:inherit;font-weight:400;color:var(--plum);background:var(--blush);border:1px solid var(--line);border-radius:12px;padding:.8em 1em;width:100%}
+.field textarea{min-height:110px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.send-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn.wa{background:var(--wa);border-color:var(--wa)}
+.btn.wa:hover{background:transparent;color:var(--wa)}
+.status{font-size:.88rem;min-height:1.4em;margin:0}
+.status.ok{color:var(--wa)}
+.status.err{color:#b3364c}
+ 
+footer{background:var(--white);border-top:1px solid var(--line);padding-block:56px 32px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.foot h4{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;margin:0 0 14px}
+.foot ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:.92rem;color:var(--plum-soft)}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--rose-deep)}
+.pay{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pay span{border:1px solid var(--line);border-radius:8px;padding:.25em .7em;font-size:.75rem;font-weight:500;letter-spacing:.06em}
+.legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:var(--plum-soft)}
+ 
+/* Floating WhatsApp */
+.wa-float{position:fixed;left:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:50;width:56px;height:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.35)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+ 
+/* Chatbot */
+.chat-toggle{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:10px;background:var(--plum);color:var(--white);border:0;border-radius:999px;padding:12px 20px 12px 12px;font:inherit;font-weight:400;cursor:pointer;box-shadow:0 16px 36px -14px rgba(74,35,56,.6)}
+.chat-toggle .av{width:36px;height:36px;border-radius:50%;background:var(--rose);color:var(--plum);display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:1.2rem}
+.chat-toggle .dot{width:8px;height:8px;border-radius:50%;background:#5fd38d;margin-left:2px}
+.chat{position:fixed;right:20px;bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:60;width:min(380px,calc(100vw - 32px));height:min(580px,calc(100vh - 130px));background:var(--white);border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 60px -24px rgba(74,35,56,.45);display:flex;flex-direction:column;overflow:hidden;transform-origin:bottom right;animation:pop .28s ease}
+@keyframes pop{from{opacity:0;transform:scale(.92) translateY(10px)}}
+.chat-head{background:var(--plum);color:var(--white);padding:16px 18px;display:flex;align-items:center;gap:12px}
+.chat-head .av{width:40px;height:40px;border-radius:50%;background:var(--rose);color:var(--plum);display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:1.3rem}
+.chat-head b{display:block;font-weight:500}
+.chat-head small{color:var(--rose);font-size:.78rem}
+.chat-head button{margin-left:auto;background:none;border:0;color:var(--white);font-size:1.5rem;cursor:pointer;line-height:1}
+.msgs{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px;background:var(--blush)}
+.msg{max-width:84%;padding:10px 14px;border-radius:16px;font-size:.92rem;line-height:1.5;white-space:pre-line;overflow-wrap:anywhere}
+.msg.bot{background:var(--white);border:1px solid var(--line);border-bottom-left-radius:4px;align-self:flex-start}
+.msg.me{background:var(--plum);color:var(--white);border-bottom-right-radius:4px;align-self:flex-end}
+.typing{display:inline-flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--rose-deep);animation:blink 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes blink{50%{opacity:.25}}
+.quick{display:flex;flex-wrap:wrap;gap:6px;padding:10px 14px;border-top:1px solid var(--line);background:var(--white)}
+.quick button{border:1px solid var(--line);background:var(--blush);border-radius:999px;padding:.35em .85em;font:inherit;font-size:.78rem;color:var(--plum);cursor:pointer}
+.quick button:hover{border-color:var(--rose-deep)}
+.chat-in{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.chat-in input{flex:1;min-width:0;font:inherit;font-weight:400;border:1px solid var(--line);border-radius:999px;padding:.7em 1em;background:var(--blush);color:var(--plum)}
+.chat-in button{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--plum);color:var(--white);cursor:pointer;display:grid;place-items:center}
+.lead{display:grid;gap:8px;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:14px;align-self:stretch}
+.lead input,.lead textarea{font:inherit;font-weight:400;font-size:.88rem;border:1px solid var(--line);border-radius:10px;padding:.55em .8em;background:var(--blush);color:var(--plum);width:100%}
+.lead textarea{min-height:64px;resize:vertical}
+.lead .btns{display:flex;gap:8px;flex-wrap:wrap}
+.lead .btns button{flex:1;border:0;border-radius:999px;padding:.6em .8em;font:inherit;font-size:.8rem;font-weight:500;cursor:pointer;color:#fff}
+.lead .b-wa{background:var(--wa)}
+.lead .b-mail{background:var(--plum)}
+ 
+/* Responsive */
+@media (max-width:960px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-art{max-width:420px;margin-inline:auto;width:100%}
+  .cats,.grid{grid-template-columns:repeat(2,1fr)}
+  .strip-grid{grid-template-columns:repeat(2,1fr)}
+  .rev-grid{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .menu-btn{display:block}
+  .nav ul{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--blush);border-bottom:1px solid var(--line);padding:8px 24px}
+  .nav ul.open{display:flex}
+  .nav ul li{padding-block:12px;border-bottom:1px solid var(--line)}
+  .nav ul li:last-child{border:0}
+  .nav .btn{display:none}
+}
+@media (max-width:520px){
+  .wrap{padding-inline:16px}
+  section{padding-block:68px}
+  .hero{padding-block:48px 64px}
+  .badge{left:8px}
+  .seal{right:4px;width:88px;height:88px}
+  .strip-grid{grid-template-columns:1fr}
+  .grid{gap:22px 14px}
+  .row2{grid-template-columns:1fr}
+  .form-card{padding:24px}
+  .foot{grid-template-columns:1fr}
+  .chat-toggle .lbl{display:none}
+  .chat-toggle{padding:10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+ 
+<div class="promo">Envío gratis en Lima por compras desde S/ 149 · Paga con Yape o Plin</div>
+ 
+<header>
+  <nav class="wrap nav" aria-label="Principal">
+    <a href="#inicio" class="logo">Amy <em>Store</em></a>
+    <ul id="menu">
+      <li><a href="#colecciones">Colecciones</a></li>
+      <li><a href="#tienda">Tienda</a></li>
+      <li><a href="#nosotras">Nosotras</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#tienda" class="btn">Comprar</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </nav>
+</header>
+ 
+<main id="inicio">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Nueva colección · Primavera 2026</span>
+        <h1>Elegancia que se siente <em>tuya</em></h1>
+        <p>Moda, accesorios y belleza seleccionados con cariño en Lima para la mujer moderna. Prendas que te acompañan del trabajo a la cena, con envío a todo el Perú.</p>
+        <div class="hero-actions">
+          <a href="#tienda" class="btn">Ver la colección</a>
+          <a href="https://wa.me/51954777988?text=Hola%20Amy%20Store%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="btn ghost">Escríbenos</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="arch">
+          <svg viewBox="0 0 400 420" fill="none">
+            <path d="M200 40c-28 0-46 22-46 48s18 46 46 46 46-20 46-46-18-48-46-48z" fill="rgba(255,253,253,.55)"/>
+            <path d="M132 150c18-10 42-14 68-14s50 4 68 14l26 70-30 10 12 190H124l12-190-30-10z" fill="rgba(255,253,253,.4)"/>
+            <path d="M150 220c30 14 70 14 100 0" stroke="rgba(255,253,253,.8)" stroke-width="2"/>
+            <circle cx="200" cy="158" r="5" fill="#c9a66b"/>
+          </svg>
+        </div>
+        <div class="badge"><strong>+2,500</strong><span>clientas felices en todo el Perú</span></div>
+        <svg class="seal" viewBox="0 0 120 120">
+          <defs><path id="c" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>
+          <circle cx="60" cy="60" r="58" fill="#fffdfd" stroke="#ead8da"/>
+          <text font-family="Jost, sans-serif" font-size="10.5" letter-spacing="3.2" fill="#4a2338"><textPath href="#c">HECHO CON AMOR · LIMA · PERÚ · </textPath></text>
+          <text x="60" y="68" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="26" fill="#c98b93">A</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="wrap strip-grid">
+      <div class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg><div><b>Envíos a todo el Perú</b><small>Lima en 24–48 h</small></div></div>
+      <div class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="2.5" width="14" height="19" rx="3"/><path d="M10 18h4"/></svg><div><b>Yape, Plin y tarjetas</b><small>Pago 100% seguro</small></div></div>
+      <div class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg><div><b>Cambios fáciles</b><small>Hasta 7 días</small></div></div>
+      <div class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><div><b>Atención personalizada</b><small>Por WhatsApp</small></div></div>
+    </div>
+  </div>
+ 
+  <!-- COLECCIONES -->
+  <section id="colecciones">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Colecciones</span><h2>Encuentra tu estilo</h2></div>
+        <p>Cuatro líneas pensadas para cada momento de tu semana.</p>
+      </div>
+      <div class="cats">
+        <a href="#tienda" class="cat" data-go="vestidos">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 6h16l-3 12 9 40H18l9-40z"/><path d="M27 18h10"/></svg>
+          <div><span>Desde S/ 89</span><h3>Vestidos</h3></div>
+        </a>
+        <a href="#tienda" class="cat" data-go="bolsos">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 24h40l-4 30H16z"/><path d="M22 24c0-8 4-14 10-14s10 6 10 14"/></svg>
+          <div><span>Desde S/ 79</span><h3>Bolsos</h3></div>
+        </a>
+        <a href="#tienda" class="cat" data-go="accesorios">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="32" cy="38" r="14"/><path d="M24 10l8 14 8-14"/><circle cx="32" cy="38" r="5"/></svg>
+          <div><span>Desde S/ 29</span><h3>Accesorios</h3></div>
+        </a>
+        <a href="#tienda" class="cat" data-go="belleza">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="24" y="26" width="16" height="30" rx="3"/><path d="M27 26V16l10-6v16"/></svg>
+          <div><span>Desde S/ 35</span><h3>Belleza</h3></div>
+        </a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- TIENDA -->
+  <section id="tienda" class="products">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Tienda</span><h2>Lo más pedido</h2></div>
+        <div class="filters" role="group" aria-label="Filtrar productos">
+          <button class="chip on" data-f="todo">Todo</button>
+          <button class="chip" data-f="vestidos">Vestidos</button>
+          <button class="chip" data-f="bolsos">Bolsos</button>
+          <button class="chip" data-f="accesorios">Accesorios</button>
+          <button class="chip" data-f="belleza">Belleza</button>
+        </div>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+ 
+  <!-- NOSOTRAS -->
+  <section id="nosotras">
+    <div class="wrap about-grid">
+      <div class="quote">“Creemos que vestirte bien es una forma de quererte.”</div>
+      <div>
+        <span class="eyebrow">Nosotras</span>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);margin:.3em 0 .5em">Una tienda peruana hecha por mujeres</h2>
+        <p>Amy Store nació en Lima con una idea simple: que encontrar prendas bonitas, de buena calidad y a precio justo no debería ser complicado. Elegimos cada pieza pensando en la mujer peruana real: la que trabaja, emprende, estudia y también se da tiempo para ella.</p>
+        <p>Te asesoramos por WhatsApp con tallas, combinaciones y regalos, y te lo llevamos hasta la puerta de tu casa.</p>
+        <div class="stats">
+          <div><b>2,500+</b><span>clientas</span></div>
+          <div><b>4.9</b><span>valoración promedio</span></div>
+          <div><b>24 h</b><span>entregas en Lima</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- RESEÑAS -->
+  <section class="reviews">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Opiniones</span><h2>Lo que dicen nuestras clientas</h2></div>
+        <p>Reseñas de ejemplo. Reemplázalas con los comentarios reales de tus clientas.</p>
+      </div>
+      <div class="rev-grid">
+        <div class="rev"><div class="stars">★★★★★</div><p>El vestido llegó al día siguiente y la talla me quedó perfecta gracias a la asesoría.</p><small>Clienta · Miraflores</small></div>
+        <div class="rev"><div class="stars">★★★★★</div><p>Pagué con Yape en un minuto y el empaque era precioso. Ideal para regalo.</p><small>Clienta · Arequipa</small></div>
+        <div class="rev"><div class="stars">★★★★★</div><p>Me respondieron rapidísimo por WhatsApp y pude cambiar el color sin problema.</p><small>Clienta · Surco</small></div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);margin:.3em 0 .8em">¿Tienes dudas?</h2>
+        <details><summary>¿Hacen envíos a provincias?</summary><p>Sí, enviamos a todo el Perú por Olva Courier y Shalom. El tiempo de entrega es de 2 a 5 días hábiles según tu ciudad.</p></details>
+        <details><summary>¿Cuánto cuesta el delivery en Lima?</summary><p>Desde S/ 10 según el distrito. Es gratis por compras desde S/ 149.</p></details>
+        <details><summary>¿Qué métodos de pago aceptan?</summary><p>Yape, Plin, transferencia BCP/Interbank y tarjetas de crédito o débito. También contraentrega en distritos seleccionados de Lima.</p></details>
+        <details><summary>¿Puedo cambiar un producto?</summary><p>Sí, tienes 7 días desde que lo recibes. La prenda debe estar sin usar y con etiquetas.</p></details>
+        <details><summary>¿Cuál es su horario de atención?</summary><p>Lunes a sábado de 9:00 a.m. a 8:00 p.m. y domingos de 10:00 a.m. a 2:00 p.m.</p></details>
+      </div>
+      <div class="contact form-card" id="contactForm">
+        <h3>Escríbenos</h3>
+        <p style="margin:0;color:var(--plum-soft)">Te responderemos por WhatsApp o correo lo antes posible.</p>
+        <div class="row2">
+          <div class="field"><label for="cName">Nombre</label><input id="cName" name="nombre" required autocomplete="name" placeholder="Tu nombre"></div>
+          <div class="field"><label for="cPhone">Celular</label><input id="cPhone" name="celular" type="tel" autocomplete="tel" placeholder="9XX XXX XXX"></div>
+        </div>
+        <div class="field"><label for="cEmail">Correo</label><input id="cEmail" name="correo" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com"></div>
+        <div class="field"><label for="cTopic">Motivo</label>
+          <select id="cTopic" name="motivo"><option>Consulta de producto</option><option>Hacer un pedido</option><option>Envíos y delivery</option><option>Cambios y devoluciones</option><option>Otro</option></select>
+        </div>
+        <div class="field"><label for="cMsg">Mensaje</label><textarea id="cMsg" name="mensaje" required placeholder="¿En qué te podemos ayudar?"></textarea></div>
+        <div class="send-row">
+          <button type="button" class="btn" id="cMail">Enviar por correo</button>
+          <button type="button" class="btn wa" id="cWa">Enviar por WhatsApp</button>
+        </div>
+        <p class="status" id="cStatus" role="status"></p>
+      </div>
+    </div>
+  </section>
+</main>
+ 
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#inicio" class="logo">Amy <em>Store</em></a>
+        <p style="color:var(--plum-soft);max-width:22em;font-size:.92rem">Moda, accesorios y belleza para la mujer moderna. Lima, Perú.</p>
+        <div class="pay"><span>YAPE</span><span>PLIN</span><span>VISA</span><span>MASTERCARD</span></div>
+      </div>
+      <div><h4>Tienda</h4><ul><li><a href="#tienda">Vestidos</a></li><li><a href="#tienda">Bolsos</a></li><li><a href="#tienda">Accesorios</a></li><li><a href="#tienda">Belleza</a></li></ul></div>
+      <div><h4>Ayuda</h4><ul><li><a href="#contacto">Envíos</a></li><li><a href="#contacto">Cambios</a></li><li><a href="#contacto">Medios de pago</a></li><li><a href="#contacto">Libro de Reclamaciones</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/51954777988" target="_blank" rel="noopener">WhatsApp: 954 777 988</a></li><li><a href="mailto:matosolarte@gmail.com">matosolarte@gmail.com</a></li><li>Lima, Perú</li><li>Lun–Sáb 9:00–20:00</li></ul></div>
+    </div>
+    <div class="legal"><span>© <span id="yr"></span> Amy Store. Todos los derechos reservados.</span><span>Precios en soles (S/) incluyen IGV.</span></div>
+  </div>
+</footer>
+ 
+<!-- WhatsApp flotante -->
+<a class="wa-float" href="https://wa.me/51954777988?text=Hola%20Amy%20Store%20%F0%9F%92%95" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8.9 3.8.8a3.3 3.3 0 0 0 2.2-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.7-.5z"/></svg>
+</a>
+ 
+<!-- Chatbot -->
+<button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chat">
+  <span class="av">A</span><span class="lbl">¿Te ayudo?</span><span class="dot" aria-hidden="true"></span>
+</button>
+<div class="chat" id="chat" role="dialog" aria-label="Asistente de Amy Store" hidden>
+  <div class="chat-head">
+    <span class="av">A</span>
+    <div><b>Amy · Asistente</b><small>Responde al instante</small></div>
+    <button id="chatClose" aria-label="Cerrar chat">×</button>
+  </div>
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+  <div class="quick" id="quick"></div>
+  <div class="chat-in" id="chatForm">
+    <input id="chatInput" placeholder="Escribe tu pregunta…" autocomplete="off" aria-label="Escribe tu pregunta">
+    <button type="button" id="chatSend" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l16-8-6 16-2-7z"/></svg></button>
+  </div>
+</div>
+ 
+<script>
+/* ===== CONFIGURACIÓN ===== */
+const WHATSAPP = "51954777988";            // Perú (+51) 954 777 988
+const EMAIL    = "matosolarte@gmail.com";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + EMAIL;
+ 
+/* ===== Productos (edita libremente) ===== */
+const ICONS = {
+  vestidos:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 6h16l-3 12 9 40H18l9-40z"/><path d="M27 18h10"/></svg>',
+  bolsos:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 24h40l-4 30H16z"/><path d="M22 24c0-8 4-14 10-14s10 6 10 14"/></svg>',
+  accesorios:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="32" cy="38" r="14"/><path d="M24 10l8 14 8-14"/><circle cx="32" cy="38" r="5"/></svg>',
+  belleza:'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="24" y="26" width="16" height="30" rx="3"/><path d="M27 26V16l10-6v16"/></svg>'
+};
+const PRODUCTS = [
+  {n:"Vestido midi satinado Rosé", c:"vestidos", p:139, o:169, t:"Nuevo", g:["#efc9cd","#b9727f"]},
+  {n:"Cartera mini Lúcuma", c:"bolsos", p:119, t:"Top ventas", g:["#efdcc7","#b48a5f"]},
+  {n:"Aretes dorados Luna", c:"accesorios", p:39, g:["#f1e1c3","#c9a66b"]},
+  {n:"Sérum iluminador Amy Glow", c:"belleza", p:59, t:"Favorito", g:["#f3d8d3","#c98b93"]},
+  {n:"Vestido wrap floral Barranco", c:"vestidos", p:149, g:["#dccbdb","#7a4f63"]},
+  {n:"Tote de cuero vegano Arena", c:"bolsos", p:129, o:159, g:["#e8d7cc","#9c7a63"]},
+  {n:"Collar perlas Callao", c:"accesorios", p:49, t:"Nuevo", g:["#ecdee4","#a07a8c"]},
+  {n:"Set labial + rubor Pétalo", c:"belleza", p:69, g:["#f1cfd2","#b05e70"]}
+];
+const grid = document.getElementById("grid");
+function renderProducts(f="todo"){
+  grid.innerHTML = PRODUCTS.filter(x=>f==="todo"||x.c===f).map(x=>`
+    <article class="card">
+      <div class="thumb" style="background:linear-gradient(165deg,${x.g[0]},${x.g[1]})">
+        ${x.t?`<span class="tag">${x.t}</span>`:""}${ICONS[x.c]}
+      </div>
+      <h3>${x.n}</h3>
+      <div class="price"><span><b>S/ ${x.p}</b>${x.o?`<s>S/ ${x.o}</s>`:""}</span>
+        <button class="ask" data-p="${x.n}" data-price="${x.p}">Pedir</button></div>
+    </article>`).join("");
+}
+renderProducts();
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); renderProducts(b.dataset.f);
+}));
+document.querySelectorAll("[data-go]").forEach(a=>a.addEventListener("click",()=>{
+  const chip=document.querySelector(`.chip[data-f="${a.dataset.go}"]`); if(chip) chip.click();
+}));
+grid.addEventListener("click",e=>{
+  const b=e.target.closest(".ask"); if(!b) return;
+  openWA(`Hola Amy Store 💕, me interesa el producto: *${b.dataset.p}* (S/ ${b.dataset.price}). ¿Está disponible?`);
+});
+ 
+/* ===== Utilidades de envío ===== */
+function openWA(text){
+  const a=document.createElement("a");
+  a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+  a.target="_blank"; a.rel="noopener";
+  document.body.appendChild(a); a.click(); a.remove();
+}
+async function sendEmail(data, subject){
+  const res = await fetch(FORM_ENDPOINT,{
+    method:"POST",
+    headers:{"Content-Type":"application/json","Accept":"application/json"},
+    body:JSON.stringify({...data,_subject:subject,_template:"table",_captcha:"false"})
+  });
+  if(!res.ok) throw new Error("No se pudo enviar");
+  return res.json();
+}
+function mailtoFallback(subject, body){
+  location.href=`mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+ 
+/* ===== Formulario de contacto ===== */
+const cf=document.getElementById("contactForm"), cs=document.getElementById("cStatus");
+function formData(){
+  const v=id=>document.getElementById(id).value.trim();
+  return {Nombre:v("cName"),Celular:v("cPhone"),Correo:v("cEmail"),Motivo:v("cTopic"),Mensaje:v("cMsg")};
+}
+function validForm(d){
+  if(!d.Nombre||!d.Mensaje){cs.className="status err";cs.textContent="Completa tu nombre y el mensaje para continuar.";return false}
+  if(!d.Celular&&!d.Correo){cs.className="status err";cs.textContent="Déjanos tu celular o correo para poder responderte.";return false}
+  return true;
+}
+const asText=d=>Object.entries(d).filter(([,v])=>v).map(([k,v])=>`${k}: ${v}`).join("\n");
+document.getElementById("cMail").addEventListener("click",async()=>{
+  const d=formData(); if(!validForm(d)) return;
+  cs.className="status"; cs.textContent="Enviando…";
+  try{ await sendEmail(d,`Nuevo mensaje web – ${d.Motivo}`); cs.className="status ok"; cs.textContent="¡Gracias! Recibimos tu mensaje y te responderemos pronto."; ["cName","cPhone","cEmail","cMsg"].forEach(id=>document.getElementById(id).value=""); }
+  catch{ cs.className="status err"; cs.textContent="No pudimos enviarlo por aquí. Abriendo tu correo…"; mailtoFallback(`Mensaje web – ${d.Motivo}`,asText(d)); }
+});
+document.getElementById("cWa").addEventListener("click",()=>{
+  const d=formData(); if(!validForm(d)) return;
+  openWA(`Hola Amy Store 💕\n${asText(d)}`);
+  cs.className="status ok"; cs.textContent="Abrimos WhatsApp con tu mensaje listo para enviar.";
+});
+ 
+/* ===== Chatbot ===== */
+const chat=document.getElementById("chat"), toggle=document.getElementById("chatToggle"),
+      msgs=document.getElementById("msgs"), quick=document.getElementById("quick"),
+      cform=document.getElementById("chatForm"), cin=document.getElementById("chatInput");
+const history=[];
+const norm=s=>s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+ 
+const KB=[
+  {k:["hola","buenas","buenos","hey","saludos"],a:"¡Hola! 💕 Soy Amy, la asistente de Amy Store. Puedo ayudarte con envíos, pagos, tallas, cambios, horarios o tomar tu pedido. ¿Qué necesitas?"},
+  {k:["envio","delivery","despacho","llega","provincia","olva","shalom","entrega"],a:"🚚 Enviamos a todo el Perú.\n• Lima: 24 a 48 h, desde S/ 10 según distrito (gratis desde S/ 149).\n• Provincias: 2 a 5 días hábiles por Olva o Shalom."},
+  {k:["pago","pagar","yape","plin","tarjeta","transferencia","contraentrega","efectivo"],a:"💳 Aceptamos Yape, Plin, transferencia BCP/Interbank y tarjetas de crédito o débito. En algunos distritos de Lima también hay pago contraentrega."},
+  {k:["talla","medida","tallas","s ","m ","l ","xl","queda"],a:"📏 Manejamos tallas S, M, L y XL. Si me cuentas tu talla habitual o tus medidas, una asesora te recomienda la ideal por WhatsApp."},
+  {k:["cambio","devolu","reembolso","garantia"],a:"🔄 Tienes 7 días desde que recibes tu pedido para cambiarlo. La prenda debe estar sin usar y con etiquetas. Los productos de belleza no tienen cambio por higiene."},
+  {k:["horario","hora","atienden","abierto","abren"],a:"🕘 Atendemos de lunes a sábado de 9:00 a.m. a 8:00 p.m. y domingos de 10:00 a.m. a 2:00 p.m."},
+  {k:["donde","ubicacion","tienda fisica","direccion","local","recojo"],a:"📍 Somos una tienda online en Lima. Coordinamos recojo previa cita y delivery a todo el Perú."},
+  {k:["precio","cuanto","cuesta","catalogo","productos","vestido","bolso","cartera","arete","collar","serum","labial"],a:"🛍️ Vestidos desde S/ 89, bolsos desde S/ 79, accesorios desde S/ 29 y belleza desde S/ 35. Puedes ver todo en la sección Tienda o pedirme que te pase con una asesora."},
+  {k:["oferta","descuento","promo","cupon","rebaja"],a:"✨ Ahora tenemos hasta 20% de descuento en piezas seleccionadas y envío gratis en Lima desde S/ 149."},
+  {k:["regalo","envolver","empaque"],a:"🎁 Todos los pedidos van en empaque de regalo sin costo. Si quieres, añadimos una tarjeta con tu dedicatoria."},
+  {k:["gracias","genial","perfecto","ok","listo"],a:"¡Con gusto! 💕 Si necesitas algo más, aquí estoy."}
+];
+const QUICK=["Envíos","Métodos de pago","Tallas","Cambios","Horario","Hablar con una asesora"];
+ 
+function addMsg(text,who="bot"){
+  const d=document.createElement("div"); d.className="msg "+who; d.textContent=text;
+  msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;
+  history.push((who==="me"?"Clienta: ":"Amy: ")+text);
+}
+function botSay(text,after){
+  const t=document.createElement("div"); t.className="msg bot";
+  t.innerHTML='<span class="typing"><i></i><i></i><i></i></span>';
+  msgs.appendChild(t); msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{t.remove(); addMsg(text); if(after) after();},650);
+}
+function renderQuick(){
+  quick.innerHTML=QUICK.map(q=>`<button type="button">${q}</button>`).join("");
+}
+quick.addEventListener("click",e=>{const b=e.target.closest("button"); if(b) handle(b.textContent)});
+ 
+function wantsHuman(t){return /(asesor|humano|persona|pedido|comprar|quiero|contact|whatsapp|correo|llamar)/.test(t)}
+ 
+function handle(raw){
+  const text=raw.trim(); if(!text) return;
+  addMsg(text,"me");
+  const t=norm(text)+" ";
+  if(wantsHuman(t)){ botSay("¡Claro! Déjame tus datos y una asesora te contactará. Puedes enviarlo directo a nuestro WhatsApp o por correo.",showLead); return; }
+  const hit=KB.find(item=>item.k.some(k=>t.includes(k)));
+  if(hit){ botSay(hit.a); return; }
+  botSay("Mmm, esa no la sé responder todavía 🙈. Déjame tus datos y una asesora te ayuda personalmente.",showLead);
+}
+ 
+function showLead(){
+  if(msgs.querySelector(".lead")) return;
+  const f=document.createElement("div"); f.className="lead";
+  f.innerHTML=`
+    <input id="lName" placeholder="Tu nombre" required autocomplete="name" aria-label="Tu nombre">
+    <input id="lPhone" type="tel" placeholder="Celular o correo" required aria-label="Celular o correo">
+    <textarea id="lMsg" placeholder="¿Qué te gustaría saber o pedir?" aria-label="Tu consulta"></textarea>
+    <div class="btns"><button type="button" class="b-wa">WhatsApp</button><button type="button" class="b-mail">Correo</button></div>`;
+  msgs.appendChild(f); msgs.scrollTop=msgs.scrollHeight;
+  const q=s=>f.querySelector(s);
+  const data=()=>({Nombre:q("#lName").value.trim(),Contacto:q("#lPhone").value.trim(),Consulta:q("#lMsg").value.trim()});
+  const ok=d=>{ if(!d.Nombre||!d.Contacto){ botSay("Necesito tu nombre y un celular o correo para que podamos responderte."); return false } return true };
+  f.querySelector(".b-wa").addEventListener("click",()=>{
+    const d=data(); if(!ok(d)) return;
+    openWA(`Hola Amy Store 💕 (desde el chat web)\nNombre: ${d.Nombre}\nContacto: ${d.Contacto}\nConsulta: ${d.Consulta||"—"}`);
+    f.remove(); botSay("Abrí WhatsApp con tu mensaje listo. Solo presiona enviar y te respondemos enseguida. 💬");
+  });
+  q(".b-mail").addEventListener("click",async()=>{
+    const d=data(); if(!ok(d)) return;
+    const btn=f.querySelector(".b-mail"); btn.textContent="Enviando…"; btn.disabled=true;
+    try{
+      await sendEmail({...d,Conversación:history.join("\n")},"Nuevo contacto desde el chat – Amy Store");
+      f.remove(); botSay(`¡Listo, ${d.Nombre}! Recibimos tus datos y te contactaremos muy pronto. 💕`);
+    }catch{
+      btn.textContent="Correo"; btn.disabled=false;
+      botSay("No pude enviarlo por aquí. Abriré tu aplicación de correo con el mensaje listo.");
+      mailtoFallback("Contacto desde el chat – Amy Store",`Nombre: ${d.Nombre}\nContacto: ${d.Contacto}\nConsulta: ${d.Consulta}`);
+    }
+  });
+}
+ 
+let started=false;
+function openChat(){
+  chat.hidden=false; toggle.setAttribute("aria-expanded","true");
+  if(!started){ started=true; renderQuick(); botSay("¡Hola! 💕 Soy Amy. ¿En qué te puedo ayudar hoy? Elige una opción o escríbeme tu pregunta."); }
+  setTimeout(()=>cin.focus(),200);
+}
+function closeChat(){ chat.hidden=true; toggle.setAttribute("aria-expanded","false"); }
+toggle.addEventListener("click",()=>chat.hidden?openChat():closeChat());
+document.getElementById("chatClose").addEventListener("click",closeChat);
+document.addEventListener("keydown",e=>{ if(e.key==="Escape" && !chat.hidden) closeChat(); });
+function sendChat(){ const v=cin.value; cin.value=""; handle(v); cin.focus(); }
+document.getElementById("chatSend").addEventListener("click",sendChat);
+cin.addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); sendChat(); } });
+ 
+/* ===== Menú móvil y año ===== */
+const menuBtn=document.getElementById("menuBtn"), menu=document.getElementById("menu");
+menuBtn.addEventListener("click",()=>{const o=menu.classList.toggle("open"); menuBtn.setAttribute("aria-expanded",o)});
+menu.addEventListener("click",e=>{if(e.target.tagName==="A"){menu.classList.remove("open");menuBtn.setAttribute("aria-expanded","false")}});
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
