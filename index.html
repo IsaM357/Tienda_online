@@ -170,12 +170,18 @@ footer{background:var(--white);border-top:1px solid var(--line);padding-block:56
  
 /* Chatbot */
 .chat-toggle{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;align-items:center;gap:10px;background:var(--plum);color:var(--white);border:0;border-radius:999px;padding:12px 20px 12px 12px;font:inherit;font-weight:400;cursor:pointer;box-shadow:0 16px 36px -14px rgba(74,35,56,.6)}
-.chat-toggle .av{width:36px;height:36px;border-radius:50%;background:var(--rose);color:var(--plum);display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:1.2rem}
+.chat-toggle .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(150deg,var(--rose),var(--rose-deep));display:grid;place-items:center;animation:float 3.2s ease-in-out infinite}
+.bot-ic{width:88%;height:88%;display:block;filter:drop-shadow(0 2px 3px rgba(74,35,56,.25))}
+@keyframes float{50%{transform:translateY(-3px) rotate(-4deg)}}
+.chat-toggle:hover .av{animation-duration:1.2s}
 .chat-toggle .dot{width:8px;height:8px;border-radius:50%;background:#5fd38d;margin-left:2px}
 .chat{position:fixed;right:20px;bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:60;width:min(380px,calc(100vw - 32px));height:min(580px,calc(100vh - 130px));background:var(--white);border:1px solid var(--line);border-radius:24px;box-shadow:0 30px 60px -24px rgba(74,35,56,.45);display:flex;flex-direction:column;overflow:hidden;transform-origin:bottom right;animation:pop .28s ease}
 @keyframes pop{from{opacity:0;transform:scale(.92) translateY(10px)}}
 .chat-head{background:var(--plum);color:var(--white);padding:16px 18px;display:flex;align-items:center;gap:12px}
-.chat-head .av{width:40px;height:40px;border-radius:50%;background:var(--rose);color:var(--plum);display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:1.3rem}
+.chat-head .av{width:44px;height:44px;flex:none;border-radius:50%;background:linear-gradient(150deg,var(--rose),var(--rose-deep));display:grid;place-items:center;box-shadow:0 0 0 3px rgba(233,201,204,.25)}
+.chat-head small{display:flex;align-items:center;gap:6px}
+.live{width:7px;height:7px;border-radius:50%;background:#5fd38d;box-shadow:0 0 0 3px rgba(95,211,141,.25)}
+.msg.bot a{color:var(--rose-deep);text-decoration:underline}
 .chat-head b{display:block;font-weight:500}
 .chat-head small{color:var(--rose);font-size:.78rem}
 .chat-head button{margin-left:auto;background:none;border:0;color:var(--white);font-size:1.5rem;cursor:pointer;line-height:1}
@@ -192,6 +198,7 @@ footer{background:var(--white);border-top:1px solid var(--line);padding-block:56
 .quick button:hover{border-color:var(--rose-deep)}
 .chat-in{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
 .chat-in input{flex:1;min-width:0;font:inherit;font-weight:400;border:1px solid var(--line);border-radius:999px;padding:.7em 1em;background:var(--blush);color:var(--plum)}
+.chat-in button:disabled{opacity:.5;cursor:wait}
 .chat-in button{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--plum);color:var(--white);cursor:pointer;display:grid;place-items:center}
 .lead{display:grid;gap:8px;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:14px;align-self:stretch}
 .lead input,.lead textarea{font:inherit;font-weight:400;font-size:.88rem;border:1px solid var(--line);border-radius:10px;padding:.55em .8em;background:var(--blush);color:var(--plum);width:100%}
@@ -230,7 +237,7 @@ footer{background:var(--white);border-top:1px solid var(--line);padding-block:56
   .form-card{padding:24px}
   .foot{grid-template-columns:1fr}
   .chat-toggle .lbl{display:none}
-  .chat-toggle{padding:10px}
+  .chat-toggle{padding:8px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -429,14 +436,28 @@ footer{background:var(--white);border-top:1px solid var(--line);padding-block:56
   <svg viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8.9 3.8.8a3.3 3.3 0 0 0 2.2-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.7-.5z"/></svg>
 </a>
  
+<!-- Ícono del chatbot -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="amyBot" viewBox="0 0 48 48">
+    <line x1="24" y1="11" x2="24" y2="6" stroke="#c9a66b" stroke-width="2" stroke-linecap="round"/>
+    <path d="M24 6.6c-.9-1.6-3.6-1.2-3.6.8 0 1.6 2.2 2.8 3.6 3.9 1.4-1.1 3.6-2.3 3.6-3.9 0-2-2.7-2.4-3.6-.8z" fill="#c9a66b" transform="translate(0,-3.2)"/>
+    <rect x="8" y="11" width="32" height="27" rx="11" fill="#fffdfd"/>
+    <rect x="12" y="15.5" width="24" height="17" rx="8" fill="#4a2338"/>
+    <path d="M16.6 23.6q2.2-2.6 4.4 0M27 23.6q2.2-2.6 4.4 0" stroke="#f3c6cc" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M21.4 27.6q2.6 1.8 5.2 0" stroke="#f3c6cc" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <circle cx="15" cy="29.2" r="1.6" fill="#c98b93"/><circle cx="33" cy="29.2" r="1.6" fill="#c98b93"/>
+    <rect x="5" y="20" width="3.4" height="9" rx="1.7" fill="#c9a66b"/><rect x="39.6" y="20" width="3.4" height="9" rx="1.7" fill="#c9a66b"/>
+    <path d="M37.5 9.5l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9z" fill="#c9a66b"/>
+  </symbol>
+</svg>
 <!-- Chatbot -->
 <button class="chat-toggle" id="chatToggle" aria-expanded="false" aria-controls="chat">
-  <span class="av">A</span><span class="lbl">¿Te ayudo?</span><span class="dot" aria-hidden="true"></span>
+  <span class="av"><svg class="bot-ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#amyBot"/></svg></span><span class="lbl">Chatea con Amy</span><span class="dot" aria-hidden="true"></span>
 </button>
 <div class="chat" id="chat" role="dialog" aria-label="Asistente de Amy Store" hidden>
   <div class="chat-head">
-    <span class="av">A</span>
-    <div><b>Amy · Asistente</b><small>Responde al instante</small></div>
+    <span class="av"><svg class="bot-ic" viewBox="0 0 48 48" aria-hidden="true"><use href="#amyBot"/></svg></span>
+    <div><b>Amy · Asistente virtual</b><small><span class="live"></span>En línea · responde al instante</small></div>
     <button id="chatClose" aria-label="Cerrar chat">×</button>
   </div>
   <div class="msgs" id="msgs" aria-live="polite"></div>
@@ -452,6 +473,7 @@ footer{background:var(--white);border-top:1px solid var(--line);padding-block:56
 const WHATSAPP = "51954777988";            // Perú (+51) 954 777 988
 const EMAIL    = "matosolarte@gmail.com";
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + EMAIL;
+const N8N_CHAT_URL  = "https://isabel-matos-ia.app.n8n.cloud/webhook/ami-chat-ventas/chat";  // Chatbot de n8n
  
 /* ===== Productos (edita libremente) ===== */
 const ICONS = {
@@ -550,7 +572,7 @@ const KB=[
   {k:["hola","buenas","buenos","hey","saludos"],a:"¡Hola! 💕 Soy Amy, la asistente de Amy Store. Puedo ayudarte con envíos, pagos, tallas, cambios, horarios o tomar tu pedido. ¿Qué necesitas?"},
   {k:["envio","delivery","despacho","llega","provincia","olva","shalom","entrega"],a:"🚚 Enviamos a todo el Perú.\n• Lima: 24 a 48 h, desde S/ 10 según distrito (gratis desde S/ 149).\n• Provincias: 2 a 5 días hábiles por Olva o Shalom."},
   {k:["pago","pagar","yape","plin","tarjeta","transferencia","contraentrega","efectivo"],a:"💳 Aceptamos Yape, Plin, transferencia BCP/Interbank y tarjetas de crédito o débito. En algunos distritos de Lima también hay pago contraentrega."},
-  {k:["talla","medida","tallas","s ","m ","l ","xl","queda"],a:"📏 Manejamos tallas S, M, L y XL. Si me cuentas tu talla habitual o tus medidas, una asesora te recomienda la ideal por WhatsApp."},
+  {k:["talla","medida","tallas","xl","queda"],a:"📏 Manejamos tallas S, M, L y XL. Si me cuentas tu talla habitual o tus medidas, una asesora te recomienda la ideal por WhatsApp."},
   {k:["cambio","devolu","reembolso","garantia"],a:"🔄 Tienes 7 días desde que recibes tu pedido para cambiarlo. La prenda debe estar sin usar y con etiquetas. Los productos de belleza no tienen cambio por higiene."},
   {k:["horario","hora","atienden","abierto","abren"],a:"🕘 Atendemos de lunes a sábado de 9:00 a.m. a 8:00 p.m. y domingos de 10:00 a.m. a 2:00 p.m."},
   {k:["donde","ubicacion","tienda fisica","direccion","local","recojo"],a:"📍 Somos una tienda online en Lima. Coordinamos recojo previa cita y delivery a todo el Perú."},
@@ -561,8 +583,16 @@ const KB=[
 ];
 const QUICK=["Envíos","Métodos de pago","Tallas","Cambios","Horario","Hablar con una asesora"];
  
+function fmt(text){
+  const esc=String(text).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  return esc
+    .replace(/\*\*(.+?)\*\*/g,"<b>$1</b>")
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')
+    .replace(/(^|[\s(])(https?:\/\/[^\s<)]+)/g,'$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+}
 function addMsg(text,who="bot"){
-  const d=document.createElement("div"); d.className="msg "+who; d.textContent=text;
+  const d=document.createElement("div"); d.className="msg "+who;
+  if(who==="bot") d.innerHTML=fmt(text); else d.textContent=text;
   msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;
   history.push((who==="me"?"Clienta: ":"Amy: ")+text);
 }
@@ -572,21 +602,76 @@ function botSay(text,after){
   msgs.appendChild(t); msgs.scrollTop=msgs.scrollHeight;
   setTimeout(()=>{t.remove(); addMsg(text); if(after) after();},650);
 }
+function showTyping(){
+  const t=document.createElement("div"); t.className="msg bot";
+  t.innerHTML='<span class="typing"><i></i><i></i><i></i></span>';
+  msgs.appendChild(t); msgs.scrollTop=msgs.scrollHeight; return t;
+}
+ 
+/* ===== Conexión con el chatbot de n8n ===== */
+function getSessionId(){
+  let id=null;
+  try{ id=localStorage.getItem("amyChatSession"); }catch{}
+  if(!id){
+    id=(crypto.randomUUID?crypto.randomUUID():"s-"+Date.now()+"-"+Math.random().toString(36).slice(2));
+    try{ localStorage.setItem("amyChatSession",id); }catch{}
+  }
+  return id;
+}
+const SESSION_ID=getSessionId();
+function pickText(data){
+  if(data==null) return "";
+  if(typeof data==="string") return data;
+  if(Array.isArray(data)) return data.map(pickText).filter(Boolean).join("\n\n");
+  return data.output ?? data.text ?? data.response ?? data.message ?? data.answer ?? (data.json?pickText(data.json):"");
+}
+async function askN8N(text){
+  const ctrl=new AbortController(); const timer=setTimeout(()=>ctrl.abort(),30000);
+  try{
+    const res=await fetch(N8N_CHAT_URL,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({action:"sendMessage",sessionId:SESSION_ID,chatInput:text}),
+      signal:ctrl.signal
+    });
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const raw=await res.text();
+    let out; try{ out=pickText(JSON.parse(raw)); }catch{ out=raw; }
+    out=String(out||"").trim();
+    if(!out) throw new Error("Respuesta vacía");
+    return out;
+  } finally { clearTimeout(timer); }
+}
+function localAnswer(text){
+  const t=norm(text)+" ";
+  const hit=KB.find(item=>item.k.some(k=>t.includes(k)));
+  return hit?hit.a:null;
+}
+ 
 function renderQuick(){
   quick.innerHTML=QUICK.map(q=>`<button type="button">${q}</button>`).join("");
 }
 quick.addEventListener("click",e=>{const b=e.target.closest("button"); if(b) handle(b.textContent)});
  
-function wantsHuman(t){return /(asesor|humano|persona|pedido|comprar|quiero|contact|whatsapp|correo|llamar)/.test(t)}
+function wantsHuman(t){return /(asesor|humano|persona real|whatsapp)/.test(t)}
  
-function handle(raw){
-  const text=raw.trim(); if(!text) return;
+let busy=false;
+async function handle(raw){
+  const text=raw.trim(); if(!text||busy) return;
   addMsg(text,"me");
-  const t=norm(text)+" ";
-  if(wantsHuman(t)){ botSay("¡Claro! Déjame tus datos y una asesora te contactará. Puedes enviarlo directo a nuestro WhatsApp o por correo.",showLead); return; }
-  const hit=KB.find(item=>item.k.some(k=>t.includes(k)));
-  if(hit){ botSay(hit.a); return; }
-  botSay("Mmm, esa no la sé responder todavía 🙈. Déjame tus datos y una asesora te ayuda personalmente.",showLead);
+  if(wantsHuman(norm(text))){ botSay("¡Claro! Déjame tus datos y una asesora te contactará. Puedes enviarlo directo a nuestro WhatsApp o por correo.",showLead); return; }
+  busy=true; sendBtn.disabled=true;
+  const typing=showTyping();
+  try{
+    const reply=await askN8N(text);
+    typing.remove(); addMsg(reply);
+  }catch(err){
+    typing.remove();
+    console.warn("Chat n8n no disponible:",err);
+    const local=localAnswer(text);
+    if(local) addMsg(local);
+    else { addMsg("En este momento no puedo responderte 🙈. Déjame tus datos y una asesora te ayuda personalmente."); showLead(); }
+  }finally{ busy=false; sendBtn.disabled=false; }
 }
  
 function showLead(){
@@ -623,15 +708,16 @@ function showLead(){
 let started=false;
 function openChat(){
   chat.hidden=false; toggle.setAttribute("aria-expanded","true");
-  if(!started){ started=true; renderQuick(); botSay("¡Hola! 💕 Soy Amy. ¿En qué te puedo ayudar hoy? Elige una opción o escríbeme tu pregunta."); }
+  if(!started){ started=true; renderQuick(); addMsg("¡Hola! 💕 Soy Amy, tu asistente virtual de Amy Store. ¿En qué te puedo ayudar hoy? Elige una opción o escríbeme tu pregunta."); }
   setTimeout(()=>cin.focus(),200);
 }
 function closeChat(){ chat.hidden=true; toggle.setAttribute("aria-expanded","false"); }
 toggle.addEventListener("click",()=>chat.hidden?openChat():closeChat());
 document.getElementById("chatClose").addEventListener("click",closeChat);
 document.addEventListener("keydown",e=>{ if(e.key==="Escape" && !chat.hidden) closeChat(); });
-function sendChat(){ const v=cin.value; cin.value=""; handle(v); cin.focus(); }
-document.getElementById("chatSend").addEventListener("click",sendChat);
+function sendChat(){ if(busy) return; const v=cin.value; cin.value=""; handle(v); cin.focus(); }
+const sendBtn=document.getElementById("chatSend");
+sendBtn.addEventListener("click",sendChat);
 cin.addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); sendChat(); } });
  
 /* ===== Menú móvil y año ===== */
@@ -642,3 +728,4 @@ document.getElementById("yr").textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
+ 
